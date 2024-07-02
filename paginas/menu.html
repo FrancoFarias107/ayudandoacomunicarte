@@ -12,7 +12,7 @@
             <th>Menu</th>
         </thead>
         <tbody>
-            <tr>
+            <tr class="fila-imagenes">
                 <td>
                     <a href="duele.html" target="cuerpo"><img src="../imagenes/dolor.png" alt="duele" id="duele"></a>
                 </td>
@@ -21,6 +21,14 @@
                 <td>Me duele</td>
             </tr>
         </tbody>
+        <tr class="fila-imagenes">
+            <td>
+                <a href="quiero.html" target="cuerpo"><img src="../imagenes/yo_quiero.png" alt="quiero" id="quiero"></a>
+            </td>
+        </tr>
+        <tr>
+            <td>Yo quiero</td>
+        </tr>
     </table>
     <script>
         const speech = window.speechSynthesis;
@@ -30,9 +38,14 @@
         const utter = new SpeechSynthesisUtterance();
 
         const duele = document.getElementById('duele');
+        const quiero = document.getElementById('quiero');
 
         duele.addEventListener('click', function(){
             utter.text = "Me duele";
+            speech.speak(utter);      
+        });
+        quiero.addEventListener('click', function(){
+            utter.text = "Yo quiero";
             speech.speak(utter);      
         });
 

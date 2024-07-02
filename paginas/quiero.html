@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/estilos.css">
+    <title>Yo quiero</title>
+</head>
+<body>
+    <table class="tabla-opciones">
+        <tbody >
+            <tr class="fila-imagenes"> 
+                <td><img src="../imagenes/quiero_comer.png" alt="comer" id="comer"></td>
+                <td><img src="../imagenes/jugar.png" alt="jugar" id="jugar"></td>
+                <td><img src="../imagenes/bailar.png" alt="bailar" id="bailar"></td>
+            </tr>
+            <tr>
+                <td>comer</td>
+                <td>jugar</td>
+                <td>bailar</td>
+            </tr>
+        </tbody>
+    </table>
+    <script>
+        const speech = window.speechSynthesis;
+        speech.volume = 1;
+        speech.rate = 1;
+        speech.pitch = 1;
+        const utter = new SpeechSynthesisUtterance();
+
+
+        const comer = document.getElementById('comer');
+        const jugar = document.getElementById('jugar');
+        const bailar = document.getElementById('bailar');
+
+
+
+        comer.addEventListener('click', function(){
+            utter.text = "comer";
+            speech.speak(utter);
+        });
+        jugar.addEventListener('click', function(){
+            utter.text = "jugar";
+            speech.speak(utter);
+        });
+        bailar.addEventListener('click', function(){
+            utter.text = "bailar";
+            speech.speak(utter);
+        });
+
+
+
+    </script>
+</body>
+</html>

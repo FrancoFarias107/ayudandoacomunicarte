@@ -1,0 +1,14 @@
+.tabla-opciones{
+    border: 2px solid black;
+    height: 100%;
+    width: 100%;
+
+}
+img{
+    width: 100%;
+    height: 100%;
+}
+img:hover{
+    transform: scale(1.2);
+    cursor: pointer;
+}

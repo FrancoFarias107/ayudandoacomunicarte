@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/estilos.css">
+    <title>Menu</title>
+</head>
+<body>
+    <table class="tabla-opciones">
+        <thead>
+            <th>Menu</th>
+        </thead>
+        <tbody>
+            <tr>
+                <td><img src="../imagenes/dolor.png" alt="duele" id="duele"></td>
+            </tr>
+            <tr>
+                <td>Me duele</td>
+            </tr>
+        </tbody>
+    </table>
+    <script>
+        const speech = window.speechSynthesis;
+        speech.volume = 1;
+        speech.rate = 1;
+        speech.pitch = 1;
+        const utter = new SpeechSynthesisUtterance();
+
+        const duele = document.getElementById('duele');
+
+        duele.addEventListener('click', function(){
+            utter.text = "Me duele";
+            speech.speak(utter);      
+        });
+
+    </script>
+</body>
+</html>

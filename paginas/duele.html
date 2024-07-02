@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/estilos.css">
+    <title>Me duele</title>
+</head>
+<body>
+    <table class="tabla-opciones">
+        <tbody>
+            <tr>
+                <td><img src="../imagenes/dolor_de_cabeza.png" alt="cabeza" id="cabeza"></td>
+                <td><img src="../imagenes/dolor_de_garganta.png" alt="garganta" id="garganta"></td>
+                <td><img src="../imagenes/dolor_de_muela.png" alt="muela" id="muela"></td>
+            </tr>
+            <tr>
+                <td>La cabeza</td>
+                <td>La garganta</td>
+                <td>La muela</td>
+            </tr>
+        </tbody>
+    </table>
+
+<script>
+    const speech = window.speechSynthesis;
+        speech.volume = 1;
+        speech.rate = 1;
+        speech.pitch = 1;
+        const utter = new SpeechSynthesisUtterance();
+
+        const cabeza = document.getElementById('cabeza');
+        const garganta = document.getElementById('garganta');
+        const muela = document.getElementById('muela');
+
+        cabeza.addEventListener('click', function(){
+            utter.text = "La cabeza";
+            speech.speak(utter);
+        });
+        garganta.addEventListener('click', function(){
+            utter.text = "La garganta";
+            speech.speak(utter);
+        });
+        muela.addEventListener('click', function(){
+            utter.text = "La muela";
+            speech.speak(utter);
+        });
+</script>
+
+</body>
+</html>

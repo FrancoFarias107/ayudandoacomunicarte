@@ -16,3 +16,7 @@ img:hover{
 .tabla-opciones tbody .fila-imagenes td{
     border: 3px solid red ;
 }
+
+.tabla-opciones tbody .elegir-recipiente td{
+    border: 5px dotted green;
+}

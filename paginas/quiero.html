@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" href="../css/estilos.css">
     <title>Yo quiero</title>
 </head>
@@ -19,8 +20,80 @@
                 <td>jugar</td>
                 <td>bailar</td>
             </tr>
+            <tr class="fila-imagenes">
+                <td><img src="../imagenes/helado.png"  alt="helado" id="helado" data-bs-toggle="modal" data-bs-target="#gustos">></td>
+            </tr>
+            <tr>
+                <td>Helado</td>
+            </tr>
+           
         </tbody>
     </table>
+    <div class="modal fade" id="gustos" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h1 class="modal-title fs-5" id="exampleModalLabel">Gustos de helados</h1>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <table class="tabla-opciones">
+                <tbody>
+                    <tr class="elegir-recipiente">
+                        <td><img src="../imagenes/cucurucho_helado.png.png"  alt="cucurucho" id="cucurucho"></td>
+                        <td><img src="../imagenes/vaso_helado,png.png"  alt="vacito" id="vacito"></td>
+                        <td><img src="../imagenes/paleta_helado.png.png"  alt="paleta" id="paleta"></td>
+                    </tr>
+                    <tr>
+                        <td>En cucurucho</td>
+                        <td>En vacito</td>
+                        <td>En paleta</td>
+                    </tr>
+                
+                    <tr class="fila-imagenes">
+                        <td><img src="../imagenes/frutilla.png"  alt="frutilla" id="frutilla"></td>
+                        <td><img src="../imagenes/helado_de_chocolate.png"  alt="chocolate" id="chocolate"></td>
+                        <td><img src="../imagenes/vainilla.png"  alt="vainilla" id="vainilla"></td>
+                    </tr>
+                    <tr>
+                        <td>De frutilla</td>
+                        <td>De chocolate</td>
+                        <td>De vainilla</td>
+                    </tr>
+                    <tr class="fila-imagenes">
+                        <td><img src="../imagenes/dulce_de_leche.png"  alt="ddl" id="ddl"></td>
+                        <td><img src="../imagenes/menta.png"  alt="menta" id="menta"></td>
+                        <td><img src="../imagenes/durazno.png.png"  alt="durazno" id="durazno"></td>
+                    </tr>
+                    <tr>
+                        <td>Dulce de leche</td>
+                        <td>De menta granizada</td>
+                        <td>De durazno</td>
+
+                    </tr>
+                    <tr class="fila-imagenes">
+                        <td><img src="../imagenes/limón.png"  alt="limon" id="limon"></td>
+                        <td><img src="../imagenes/manzana.png"  alt="manza" id="manzana"></td>
+                        <td><img src="../imagenes/mani.png.png"  alt="maní" id="maní"></td>
+                    </tr>
+                    <tr>
+                        <td>De limon</td>
+                        <td>De manzana</td>
+                        <td>De maní</td>
+                    </tr>
+
+
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+              
+            </div>
+          </div>
+        </div>
+      </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     <script>
         const speech = window.speechSynthesis;
         speech.volume = 1;
@@ -32,8 +105,18 @@
         const comer = document.getElementById('comer');
         const jugar = document.getElementById('jugar');
         const bailar = document.getElementById('bailar');
-
-
+        const helado = document.getElementById('helado');
+        const frutilla = document.getElementById('frutilla');
+        const chocolate = document.getElementById('chocolate');
+        const vainilla = document.getElementById('vainilla');
+        const ddl = document.getElementById('ddl');
+        const menta = document.getElementById('menta');
+        const durazno = document.getElementById('durazno');
+        const limon = document.getElementById('limon');
+        const manzana = document.getElementById('manzana');
+        const cucurucho = document.getElementById('cucurucho');
+        const vacito = document.getElementById('vacito');
+        const paleta = document.getElementById('paleta');
 
         comer.addEventListener('click', function(){
             utter.text = "comer";
@@ -47,7 +130,58 @@
             utter.text = "bailar";
             speech.speak(utter);
         });
-
+        helado.addEventListener('click', function(){
+            utter.text = "helado";
+            speech.speak(utter);
+        });
+        frutilla.addEventListener('click', function(){
+            utter.text = "De frutilla";
+            speech.speak(utter);
+        });
+        chocolate.addEventListener('click', function(){
+            utter.text = "De chocolate";
+            speech.speak(utter);
+        });
+        vainilla.addEventListener('click', function(){
+            utter.text = "De vainilla";
+            speech.speak(utter);
+        });
+        ddl.addEventListener('click', function(){
+            utter.text = "De dulce de leche";
+            speech.speak(utter);
+        });
+        menta.addEventListener('click', function(){
+            utter.text = "De menta granizada";
+            speech.speak(utter);
+        });
+        durazno.addEventListener('click', function(){
+            utter.text = "De durazno";
+            speech.speak(utter);
+        });
+        limon.addEventListener('click', function(){
+            utter.text = "De limon";
+            speech.speak(utter);
+        });
+        manzana.addEventListener('click', function(){
+            utter.text = "De manzana";
+            speech.speak(utter);
+        });
+        maní.addEventListener('click', function(){
+            utter.text = "De maní";
+            speech.speak(utter);
+        });
+        cucurucho.addEventListener('click', function(){
+            utter.text = "En cucurucho";
+            speech.speak(utter);
+        });
+        vacito.addEventListener('click', function(){
+            utter.text = "En vacito";
+            speech.speak(utter);
+        });
+        paleta.addEventListener('click', function(){
+            utter.text = "En paleta";
+            speech.speak(utter);
+        });
 
 
     </script>

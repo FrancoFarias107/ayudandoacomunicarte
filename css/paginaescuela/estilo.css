@@ -1,0 +1,51 @@
+#informacion{
+    width: 100%;
+    height: 10%;
+}
+
+body{
+    background-color: rgb(61, 177, 177);
+    font-family: monospace;
+}
+header{
+    text-align: center;
+    background-color: cornflowerblue;
+    font-size: 16px;
+}
+nav{
+    background-color:darkgray;
+    font-size: 16px;
+    font-family: cursive;
+    width: 100%;
+    height: 120%;
+}
+
+ul li a{
+    text-decoration: none;
+}
+
+ul li a:hover{
+    color: red;
+    text-decoration: underline;
+    font-size: 25px;
+}
+
+ul li{
+    display: inline;
+    margin-right: 120px;
+}
+
+#novedades{
+    width: 100%;
+    height: 400px;
+    display: flex;
+    
+}
+
+.novedad{
+    width: 33%;
+    height: 300px;
+    background-color: burlywood;
+    justify-content: space-around;
+    border: 1px solid black;
+}

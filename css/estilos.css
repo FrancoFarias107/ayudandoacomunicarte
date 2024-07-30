@@ -20,3 +20,36 @@ img:hover{
 .tabla-opciones tbody .elegir-recipiente td{
     border: 5px dotted green;
 }
+
+.tamaño-icono{
+    font-size: 70px;
+    transition: 0.2s;
+}
+.tamaño-icono:hover{
+    font-size:100px;
+    transform: scale(1.05);
+    cursor: pointer;
+}
+
+body{
+    background-color:darkcyan;
+}
+
+.contenedor{
+    display: grid;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    background-color:burlywood;
+}
+.contenedor textarea{
+    resize: none;
+    font-size:25px
+}
+
+.aceptar{
+    height: 35px;
+    background-color: green;
+    color: black;
+    font-size: 25px;
+}

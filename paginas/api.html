@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Api</title>
+    <script src="../js/jquery-3.7.1.min.js"></script>
+    <link rel="stylesheet" href="../css/estilos.css">
+</head>
+<body>
+    <div class="contenedor">
+        <h2>Ingrsar texto para buscar imagenes</h2>
+        <input type="text" name="buscar" id="buscar">
+        <button id="btn-buscar">Buscar</button>
+    </div>
+    <div id="imagen"></div>
+    <div id="nombre-imagen"></div>
+    <script>
+        $(document).ready(function(){
+            $('#btn-buscar').click(function(){
+                var texto = $('#buscar').val();
+                $('#buscar').val('');
+                $('#imagen').html('');
+                $('#nombre-imagen').html('');
+                var id1, id2, id3;
+                
+                $.ajax({
+                    url:'https://api.arasaac.org/v1/pictograms/es/search/'+texto,
+                    success: function(respuesta){
+                        console.log(respuesta[0].keywords[0].keyword);
+                        console.log(respuesta[0]._id);
+                        console.log(respuesta[1]._id);
+                        console.log(respuesta[2]._id);
+                        id1 = respuesta[0]._id;
+                        id2 = respuesta[1]._id;
+                        id3 = respuesta[2]._id;
+                        $('#imagen').append('<img style="width:33%;height:33%;" src="https://api.arasaac.org/api/pictograms/'+id1+'">');
+                        $('#imagen').append('<img style="width:33%;height:33%;" src="https://api.arasaac.org/api/pictograms/'+id2+'">');
+                        $('#imagen').append('<img style="width:33%;height:33%;" src="https://api.arasaac.org/api/pictograms/'+id3+'">');
+                        
+                        $('#nombre-imagen').append('<p style="width:33%;height:33%;">'+respuesta[0].keywords[0].keyword+'</p>');
+                        $('#nombre-imagen').append('<p style="width:33%;height:33%;">'+respuesta[0].keywords[0].keyword+'</p>');
+                        $('#nombre-imagen').append('<p style="width:33%;height:33%;">'+respuesta[0].keywords[0].keyword+'</p>');
+
+                        $('img').click(function(){
+
+                            const speech = window.speechSynthesis;
+                            speech.volume = 1;
+                            speech.rate = 1;
+                            speech.pitch = 1;
+                            const utter = new SpeechSynthesisUtterance();
+                            utter.text = respuesta[0].keywords[0].keyword;
+                            speech.speak(utter);
+                        })
+                    }
+                });
+
+                
+
+            });
+        });
+    </script>
+</body>
+</html>

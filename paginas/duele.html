@@ -19,6 +19,38 @@
                 <td>La garganta</td>
                 <td>La muela</td>
             </tr>
+            <tr class="fila-imagenes">
+                <td><img src="../imagenes/dolor_ de_ pecho.png" alt="pecho" id="pecho"></td>
+                <td><img src="../imagenes/dolor_de_brazo.png" alt="brazo" id="brazo"></td>
+                <td><img src="../imagenes/dolor_de_pierna.png" alt="pierna" id="pierna"></td>
+
+            </tr>
+            <tr>
+                <td>El pecho</td>
+                <td>El brazo</td>
+                <td>La pierna</td>
+            </tr>
+            <tr class="fila-imagenes">
+                <td><img src="../imagenes/dolor_de_mano.png" alt="mano" id="mano"></td>
+                <td><img src="../imagenes/dolor_de_estómago.png" alt="estomago" id="estomago"></td>
+                <td><img src="../imagenes/dolor _de_pie.png" alt="pie" id="pie"></td>
+
+            </tr>
+            <tr>
+                <td>La mano</td>
+                <td>El estomago</td>
+                <td>El pie</td>
+            </tr>
+            <tr class="fila-imagenes">
+                <td><img src="../imagenes/dolor_de_espalda.png" alt="espalda" id="espalda"></td>
+                <td><img src="../imagenes/dolor_de_cuerpo.png" alt="cuerpo" id="cuerpo"></td>
+                <td><img src="../imagenes/dolor_de_oído.png" alt="oido" id="oido"></td>
+            </tr>
+            <tr>
+                <td>La espalda</td>
+                <td>El cuerpo</td>
+                <td>El oido</td>
+            </tr>
         </tbody>
     </table>
 
@@ -32,6 +64,14 @@
         const cabeza = document.getElementById('cabeza');
         const garganta = document.getElementById('garganta');
         const muela = document.getElementById('muela');
+        const pecho = document.getElementById('pecho');
+        const brazo = document.getElementById('brazo');
+        const pierna = document.getElementById('pierna');
+        const mano = document.getElementById('mano');
+        const pie = document.getElementById('pie');
+        const espalda = document.getElementById('espalda');
+        const cuerpo = document.getElementById('cuerpo');
+        const oido = document.getElementById('oido');
 
         cabeza.addEventListener('click', function(){
             utter.text = "La cabeza";
@@ -43,6 +83,42 @@
         });
         muela.addEventListener('click', function(){
             utter.text = "La muela";
+            speech.speak(utter);
+        });
+        pecho.addEventListener('click', function(){
+            utter.text = "El pecho";
+            speech.speak(utter);
+        });
+        brazo.addEventListener('click', function(){
+            utter.text = "El brazo";
+            speech.speak(utter);
+        });
+        pierna.addEventListener('click', function(){
+            utter.text = "La pierna";
+            speech.speak(utter);
+        });
+        mano.addEventListener('click', function(){
+            utter.text = "La mano";
+            speech.speak(utter);
+        });
+        estomago.addEventListener('click', function(){
+            utter.text = "El estomago";
+            speech.speak(utter);
+        });
+        pie.addEventListener('click', function(){
+            utter.text = "El pie";
+            speech.speak(utter);
+        });
+        espalda.addEventListener('click', function(){
+            utter.text = "La espalda";
+            speech.speak(utter);
+        });
+        cuerpo.addEventListener('click', function(){
+            utter.text = "El cuerpo";
+            speech.speak(utter);
+        });
+        oido.addEventListener('click', function(){
+            utter.text = "El oido";
             speech.speak(utter);
         });
 </script>

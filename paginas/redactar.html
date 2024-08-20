@@ -7,6 +7,7 @@
     <script src="../js/jquery-3.7.1.min.js"></script>
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <link rel="stylesheet" href="../css/estilos.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 <body>
     <div class="contenedor-redactar"> 
@@ -34,6 +35,27 @@
                     <td>comer</td>
                     <td>jugar</td>
                     <td>bailar</td>
+                </tr>
+                <tr class="fila-imagenes"> 
+                    <td><img src="../imagenes/durazno.png.png" alt="durazno" id="durazno"></td>
+                    <td><img src="../imagenes/frutilla.png" alt="frutila" id="frutilla"></td>
+                    <td><img src="../imagenes/dulce_de_leche.png" alt="ddl" id="ddl"></td>
+                </tr>
+                <tr>
+                    <td>durazno</td>
+                    <td>frutilla</td>
+                    <td>dulce de leche</td>
+                </tr>
+                <tr class="fila-imagenes"> 
+                    <td><img src="../imagenes/dolor_de_cabeza.png" alt="ddc" id="ddc"></td>
+                    <td><img src="../imagenes/dolor_de_garganta.png" alt="ddg" id="ddg"></td>
+                    <td><img src="../imagenes/dolor_de_muela.png" alt="ddm" id="ddm"></td>
+                </tr>
+                <tr>
+                    <td>dolor de cabeza</td>
+                    <td>dolor de garganta</td>
+                    <td>dolor de muela</td>
+                </tr>
             </tbody>
         </table>    
 
@@ -43,33 +65,71 @@
         $(document).ready(function(){
             var frase= '';
             var id = '';
-            $('#comer').click(function(){
-               id = id + 'a';
-                $('#img-1').append('<img src="../imagenes/quiero_comer.png" style="width:50px;height="50px;" id="'+id+'">');
-                frase += "comer";
-            });
-            $('#jugar').click(function(){
-                id = id + 'a';
-                $('#img-1').append('<img src=" ../imagenes/jugar.png" style="width:50px;height="50px;" id="'+id+'">');
-                frase += "jugar";
-            });
-            $('#bailar').click(function(){
-                id = id + 'a';
-                $('#img-1').append('<img src="../imagenes/bailar.png" style="width:50px;height="50px;" id="'+id+'">');
-                frase += "bailar";
-            });
-
-         $('#leer').click(function(){
+            let frase_completa = [];
         const speech = window.speechSynthesis;
         speech.volume = 1;
         speech.rate = 1;
         speech.pitch = 1;
         const utter = new SpeechSynthesisUtterance();
 
-        utter.text = frase;
+            $('#comer').click(function(){
+               id = id + 'a';
+                $('#img-1').append('<img src="../imagenes/quiero_comer.png" style="width:50px;height="50px;" id="'+id+'">');
+                frase_completa.push('comer');
+            });
+            $('#jugar').click(function(){
+                id = id + 'a';
+                $('#img-1').append('<img src=" ../imagenes/jugar.png" style="width:50px;height="50px;" id="'+id+'">');
+                frase_completa.push('jugar');
+            });
+            $('#bailar').click(function(){
+                id = id + 'a';
+                $('#img-1').append('<img src="../imagenes/bailar.png" style="width:50px;height="50px;" id="'+id+'">');
+                frase_completa.push('bailar');
+            });
+            $('#durazno').click(function(){
+               id = id + 'a';
+                $('#img-1').append('<img src="../imagenes/durazno.png.png" style="width:50px;height="50px;" id="'+id+'">');
+                frase_completa.push('durazno');
+            });
+            $('#frutilla').click(function(){
+               id = id + 'a';
+                $('#img-1').append('<img src="../imagenes/frutilla.png" style="width:50px;height="50px;" id="'+id+'">');
+                frase_completa.push('frutilla');
+            });
+            $('#ddl').click(function(){
+               id = id + 'a';
+                $('#img-1').append('<img src="../imagenes/dulce_de_leche.png" style="width:50px;height="50px;" id="'+id+'">');
+                frase_completa.push('dulce de leche');
+            });
+            $('#ddc').click(function(){
+               id = id + 'a';
+                $('#img-1').append('<img src="../imagenes/dolor_de_cabeza.png" style="width:50px;height="50px;" id="'+id+'">');
+                frase_completa.push('dolor de  cabeza');
+            });
+            $('#ddg').click(function(){
+               id = id + 'a';
+                $('#img-1').append('<img src="../imagenes/dolor_de_garganta.png" style="width:50px;height="50px;" id="'+id+'">');
+                frase_completa.push('dolor de garganta');
+            });
+            $('#ddm').click(function(){
+               id = id + 'a';
+                $('#img-1').append('<img src="../imagenes/dolor_de_muela.png" style="width:50px;height="50px;" id="'+id+'">');
+                frase_completa.push('dolor de muela');
+            });
 
-            if(frase == ''){
+         $('#leer').click(function(){
+       
+
+        utter.text = frase_completa;
+
+            if(frase_completa == ''){
                 utter.text = "No hay frase para leer."
+            Swal.fire({
+            title: "Error",
+             text: "No hay frase para leer",
+            icon: "error"
+            });
                 speech.speak(utter)
             }else{
                 speech.speak(utter);
@@ -79,20 +139,38 @@
          });
          $('#borrar').click(function(){
             if($('#img-1').html() == ''){
-                alert("No hay elemento para borrar.")
+            Swal.fire({
+            title: "Error",
+             text: "No hay elementos para borrar",
+            icon: "error"
+            });
+            utter.text = "No hay elementos para borrar";
+            speech.speak(utter);
             }else{
                 $('#img-1').html('');
-            frase = '';
+            frase_completa = [];
             id = '';
+            console.log(frase_completa);
             }
             
          })
          $('#borrar-ultimo').click(function(){
             if(id == ''){
-                alert("No hay elementos para borrar.");
+            Swal.fire({
+            title: "Error",
+             text: "No hay elementos para borrar",
+            icon: "error"
+            });
+            utter.text = "No hay elementos para borrar";
+            speech.speak(utter);
             }else{
                 $('#'+id+'').remove();
                 id = id.substring(0, id.length - 1);
+                frase_completa.pop();
+                console.log(frase_completa);
+                if(id == ''){
+                    frase_completa = [];
+                }
             }
             
          });

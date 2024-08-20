@@ -89,4 +89,8 @@ body{
     border-radius: 5px;
     background-color: cornsilk;
 }
+.imagen-marker{
+    width: 100px;
+    height: 100px;
+}
 

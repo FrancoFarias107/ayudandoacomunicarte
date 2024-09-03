@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Noticias</title>
+    <script src="../js/jquery-3.7.1.min.js"></script>
+</head>
+<body>
+    <div class="contenedor-noricias">
+        <table id="tabla">
+            <tr id="fila">
+            </tr>
+        </table>
+    </div>
+    <script>
+        $(document).ready(function() {
+            let contador = 0;
+            $.ajax({
+               url:'https://newsdata.io/api/1/news?apikey=pub_5260311bbee2978d88444dce8cf36ee8dafdf&q=Buenos Aires&country=ar',
+                
+               success:function(data){
+                console.log(data);
+                for(let i=0; i < 10; i++){
+                console.log(data.results[i].country[0]);
+                console.log(data.results[i].title);
+                console.log(data.results[i].pubDate);
+                console.log(data.results[i].source_name);
+                console.log("---------------");
+                $('#tabla').append(data.results[i].country[0]+'<br>'+data.results[i].title+'<br>'+data.results[i].pubDate+'<br>'+data.results[i].source_name+'<br>');
+                $('#tabla').append('<button id='+i+'>Leer</button>');
+                    $('#tabla').append('<button id='+i+"j"+'>Stop</button><br>');
+
+                  $('#'+i+'').click(function(){
+                    const speech = window.speechSynthesis;
+                    speech.volume = 1;
+                    speech.rate = 0.6;
+                    speech.pitch = 0.6;
+
+                    const utter = new SpeechSynthesisUtterance();
+
+                    utter.text = 'Pais: '+data.results[i].country[0]+'.';
+                    utter.text += 'Titulo: '+data.results[i].title+'.';
+                    utter.text += 'Fecha de publicacion: '+data.results[i].pubDate+'.';
+                    utter.text += 'Fuente: '+data.results[i].source_name+'.';
+
+                    speech.speak(utter); 
+                  });
+                $('#'+i+"j"+'').click(function(){
+                    const speech = window.speechSynthesis;
+                    speech.volume = 1;
+                    speech.rate = 0.6;
+                    speech.pitch = 0.6;
+
+                    speech.cancel();
+                });
+
+                $('#tabla').append('<tr></tr><br>')
+                }
+               
+               }
+            });
+        });
+        
+    </script>
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Texto a Voz</title>
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="../css/estilos.css">
+</head>
+<body>
+    <div class="contenedor">
+        <h2>Ingresar texto </h2>
+        <textarea name="area" id="area" cols="30" rows="10"></textarea>
+        <button id="btn-aceptar" class="aceptar"><i class='bx bx-speaker' style='color:#181717' >Aceptar</i></button>
+    </div>
+    <script>
+        const aceptar = document.getElementById('btn-aceptar');
+
+        aceptar.addEventListener('click', function(){
+            const area = document.getElementById('area').value;
+
+        const speech = window.speechSynthesis;
+        speech.volume = 1;
+        speech.rate = 1;
+        speech.pitch = 1;
+        const utter = new SpeechSynthesisUtterance();
+
+            if(area==''){
+                utter.text= "El Area de texto esta vacia...";
+                speech.speak(utter);
+                alert("El Area de texto esta vacia...");
+            }
+
+        
+
+        utter.text = area;
+        speech.speak(utter);
+
+        document.getElementById('area').value = '';
+        })
+
+    </script>
+</body>
+</html>

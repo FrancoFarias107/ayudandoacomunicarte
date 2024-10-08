@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/estilos.css">
+    <title>Menu</title>
+</head>
+<body>
+    <table class="tabla-opciones">
+        <thead>
+            <th>Menu</th>
+        </thead>
+        <tbody>
+            <tr class="fila-imagenes">
+                <td>
+                    <a href="duele.html" target="cuerpo"><img src="../imagenes/dolor.png" alt="duele" id="duele"></a>
+                </td>
+            </tr>
+            <tr>
+                <td>Me duele</td>
+            </tr>
+        </tbody>
+        <tr class="fila-imagenes">
+            <td>
+                <a href="quiero.html" target="cuerpo"><img src="../imagenes/yo_quiero.png" alt="quiero" id="quiero"></a>
+            </td>
+        </tr>
+        <tr>
+            <td>Yo quiero</td>
+        </tr>
+    </table>
+    <script>
+        const speech = window.speechSynthesis;
+        speech.volume = 1;
+        speech.rate = 1;
+        speech.pitch = 1;
+        const utter = new SpeechSynthesisUtterance();
+
+        const duele = document.getElementById('duele');
+        const quiero = document.getElementById('quiero');
+
+        duele.addEventListener('click', function(){
+            utter.text = "Me duele";
+            speech.speak(utter);      
+        });
+        quiero.addEventListener('click', function(){
+            utter.text = "Yo quiero";
+            speech.speak(utter);      
+        });
+
+    </script>
+</body>
+</html>

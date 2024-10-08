@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clima</title>
+    <script src="../js/jquery-3.7.1.min.js"></script>
+</head>
+<body>
+    <div class="contenedor-clima">
+        <div class="clima-1">
+            <img id="icono1" alt="icono1">
+            <p id="mintempc1">Min. </p>
+            <p id="maxtempc1">Máx. </p>
+            <p id="humedadprom1">Humedad. </p>
+            <p id="maxkph1">velocidad del viento. </p>
+            <button id="Leer-1">Leer</button>
+        </div>
+        <div class="clima-2">
+
+        </div>
+        <div class="clima-3">
+
+        </div>
+        
+    </div>
+    <script>
+        $(document).ready(function(){
+            $.ajax({
+               url: 'http://api.weatherapi.com/v1/forecast.json?key=e89f8c014f5f41e2b2c181142241308&q=-35.48912,-62.97569&days=3&aqi=no&alerts=no',
+               success:function(respuesta){
+                console.log(respuesta);
+                console.log(respuesta.forecast.forecastday[0].day.condition.icon);
+                var icono = respuesta.forecast.forecastday[0].day.condition.icon;
+                $('#icono1').attr("src", icono);
+                $('#mintempc1').append(respuesta.forecast.forecastday[0].day.mintemp_c+" c° ");
+                $('#maxtempc1').append(respuesta.forecast.forecastday[0].day.maxtemp_c+" c° ");
+                $('#humedadprom1').append(respuesta.forecast.forecastday[0].day.avghumidity+" % ");
+                $('#maxkph1').append(respuesta.forecast.forecastday[0].day.maxwind_kph+" kph ");
+                $('#Leer-1').click(function(){
+                    const speech = window.speechSynthesis;
+                    speech.volume = 1;
+                    speech.rate = 0.6;
+                    speech.pitch = 0.6;
+                    
+                    const utter = new SpeechSynthesisUtterance();
+                    utter.text = "La temperatura minima para hoy es de "+ respuesta.forecast.forecastday[0].day.mintemp_c+"Grados centigrados";
+                    utter.text += " Tambien la temperatura maxima sera tambien de "+ respuesta.forecast.forecastday[0].day.maxtemp_c+"Grados centigrados";
+                    speech.speak(utter);
+                })
+
+               } 
+            });
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,123 @@
+.tabla-opciones{
+    border: 2px solid black;
+    height: 100%;
+    width: 100%;
+
+}
+img{
+    width: 100%;
+    height: 100%;
+}
+img:hover{
+    transform: scale(1.2);
+    cursor: pointer;
+}
+
+.tabla-opciones tbody .fila-imagenes td{
+    border: 3px solid red ;
+}
+
+.tabla-opciones tbody .elegir-recipiente td{
+    border: 5px dotted green;
+}
+
+.tamaño-icono{
+    font-size: 70px;
+    transition: 0.2s;
+}
+.tamaño-icono:hover{
+    font-size:100px;
+    transform: scale(1.05);
+    cursor: pointer;
+}
+
+body{
+    background-color:darkcyan;
+}
+
+.contenedor{
+    display: grid;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    background-color:burlywood;
+}
+.contenedor textarea{
+    resize: none;
+    font-size:25px
+}
+
+.aceptar{
+    height: 35px;
+    background-color: green;
+    color: black;
+    font-size: 25px;
+}
+
+.busquedas{
+    display:flex;
+    width: 100%;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+    padding:10px 10px;
+}
+
+.contenedor-redactar .formulario-redactar{	
+    resize: none;
+}
+.imagen-redactar{
+    width: 2rem;
+    height: 2rem;
+}
+.contenedor-leer{
+    width: 100%;
+    height: 25%;
+}
+.tabla-redactar{
+    width: 100%;
+    height: 5rem;
+    border:2px solid black;
+}
+.img-1{
+    width: 100%;
+    height: 100%;
+}
+.btn{
+    width: 15%;
+    height: 10%;
+    border-radius: 5px;
+    background-color: cornsilk;
+}
+.imagen-marker{
+    width: 100px;
+    height: 100px;
+}
+.btn-leer{
+    background-color: lightseagreen;
+    color: brown;
+    border: 1px solid brown;
+    border-radius: 10px;
+    width: 50px;
+    height: 30px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+.btn-leer:hover{
+    transform: scale(1.05);
+}
+
+.btn-stop{
+    background-color:crimson;
+    color:white;
+    border: 1px solid white;
+    border-radius: 10px;
+    width: 50px;
+    height: 30px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+.btn-stop:hover{
+    transform: scale(1.05);
+}
+

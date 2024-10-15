@@ -4,21 +4,27 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Geolocalizacion</title>
+    <script src="../js/jquery-3.7.1.min.js"></script>
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
      integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
      crossorigin=""></script>
+     <script src="https://unpkg.com/leaflet-routing-machine@latest/dist/leaflet-routing-machine.js"></script>
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
     integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
     crossorigin=""/>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet-routing-machine@latest/dist/leaflet-routing-machine.css" />
     <link rel="stylesheet" href="../css/estilos.css">
     <style>
         #map { height: 500px;}
+        #texto{ display:none; }
     </style>
 </head>
 <body>
     <div id="map"></div>
-
+    <p id="texto"></p>
     <script>
+        let camino;
+        let nombre = '';
         var map = L.map('map').setView([-35.4891431, -62.9756327], 15);
 
         L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -26,7 +32,7 @@
     attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
     }).addTo(map);
 
-    var marker = L.marker([-35.49463, -62.965211]).addTo(map);
+    var marker = L.marker([-35.49463, -62.965211]).addTo(map); //-35.488245, -62.985091
     var marker2 = L.marker([-35.489276, -62.97565]).addTo(map);
     var marker3 = L.marker([-35.492368,  -62.985896]).addTo(map);
     var marker4 = L.marker([-35.49111,  -62.974888]).addTo(map);
@@ -35,6 +41,7 @@
     var marker7 = L.marker([-35.487738,   -62.974159]).addTo(map);
     var marker8 = L.marker([-35.501749,   -62.976143]).addTo(map);
     var marker9 = L.marker([-35.505819,   -62.9708]).addTo(map);
+    var marker10 = L.marker([-35.490097,   -62.975489]).addTo(map);
     marker.bindPopup("<b>Escuela Tecnica N°1</b><br><br><img src='../imagenes/escuela-tecnica.jpg' class='imagen-marker'>").openPopup();
     marker2.bindPopup("<b>Plaza Colón</b><br><br><img src='../imagenes/plaza-colon.jpg' class='imagen-marker'>").openPopup();
     marker3.bindPopup("<b>Hospital de Rivadavia</b><br><br><img src='../imagenes/hospital-rivadavia.jpg' class='imagen-marker'>").openPopup();
@@ -44,6 +51,7 @@
     marker7.bindPopup("<b>Cine Español de America</b><br><br><img src='../imagenes/cine-america.webp' class='imagen-marker'>").openPopup();
     marker8.bindPopup("<b>Viero de America</b><br><br><img src='../imagenes/vivero-america.jpg' class='imagen-marker'>").openPopup();
     marker9.bindPopup("<b>zoo de America</b><br><br><img src='../imagenes/zoo-america.jpg' class='imagen-marker'>").openPopup();
+    marker10.bindPopup("<b>Municipalidad de America</b><br><br><img src='../imagenes/municipalidad-de-rivadavia.jpg' class='imagen-marker'>").openPopup();
     
     marker.addEventListener('click', function(){
         const speech = window.speechSynthesis;
@@ -125,16 +133,48 @@
                             const utter = new SpeechSynthesisUtterance();
                             utter.text = "zoologico de America Rivadavia";
                             speech.speak(utter);
+                    });               
+    marker10.addEventListener('click', function(){
+        const speech = window.speechSynthesis;
+                            speech.volume = 1;
+                            speech.rate = 1;
+                            speech.pitch = 1;
+                            const utter = new SpeechSynthesisUtterance();
+                            utter.text = "municipalidad de america rivadavia";
+                            speech.speak(utter);
     });
 
+    camino = L.Routing.control({
+        waypoints:[
+            L.latLng(-35.488245, -62.985091),
+            L.latLng(-35.492479, -62.985735)
+        ],
+        language: 'es'
+    }).on('routesfound', function(e){
+        for(let i=0; i < e.routes[0].instructions.length; i++){
+            console.log(e.routes[0].instructions[i].text+' '+e.routes[0].instructions[i].distance);
+            nombre = 'a';
+            $('#texto').append('<p name="'+nombre+'" onclick="leer_camino(this.name)"></p>');
+            nombre = nombre + 'a';
+        }
+    }).addTo(map);
 
+    function leer_camino(nombre){
+        const speech = window.speechSynthesis;
+                            speech.volume = 1;
+                            speech.rate = 0.6;
+                            speech.pitch = 0.6;
+                            const utter = new SpeechSynthesisUtterance();
+                            utter.text = nombre;
+                            speech.speak(utter);
+    }
+ 
     function onMapClick(e) {
-    //alert("You clicked the map at " + e.latlng);
-    console.log("click "+e.latlng);
-
+    alert("You clicked the map at " + e.latlng);
 }
 
 map.on('click', onMapClick);
+
     </script>
 </body>
 </html>

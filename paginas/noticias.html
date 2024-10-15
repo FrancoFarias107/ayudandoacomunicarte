@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Noticias</title>
     <script src="../js/jquery-3.7.1.min.js"></script>
+    <link rel="stylesheet" href="../css/estilos.css">
 </head>
 <body>
     <div class="contenedor-noricias">
@@ -28,8 +29,8 @@
                 console.log(data.results[i].source_name);
                 console.log("---------------");
                 $('#tabla').append(data.results[i].country[0]+'<br>'+data.results[i].title+'<br>'+data.results[i].pubDate+'<br>'+data.results[i].source_name+'<br>');
-                $('#tabla').append('<button id='+i+'>Leer</button>');
-                    $('#tabla').append('<button id='+i+"j"+'>Stop</button><br>');
+                $('#tabla').append('<button id='+i+' class="btn-leer">Leer</button>');
+                    $('#tabla').append('<button id='+i+"j"+' class="btn-stop">Stop</button><br>');
 
                   $('#'+i+'').click(function(){
                     const speech = window.speechSynthesis;

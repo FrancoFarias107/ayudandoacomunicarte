@@ -93,4 +93,31 @@ body{
     width: 100px;
     height: 100px;
 }
+.btn-leer{
+    background-color: lightseagreen;
+    color: brown;
+    border: 1px solid brown;
+    border-radius: 10px;
+    width: 50px;
+    height: 30px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+.btn-leer:hover{
+    transform: scale(1.05);
+}
+
+.btn-stop{
+    background-color:crimson;
+    color:white;
+    border: 1px solid white;
+    border-radius: 10px;
+    width: 50px;
+    height: 30px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+.btn-stop:hover{
+    transform: scale(1.05);
+}
 

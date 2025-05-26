@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agenda</title>
+</head>
+<body>
+    <div class="contenedor-agenda">
+        <div class="formulario">
+            <h2>Ingresar tarea</h2>
+            <input type="text" name="tarea" id="tarea">
+            <button id="agregar-tarea">Agregar</button>
+            <link rel="stylesheet" href="../css/estilo-agenda.css">
+        </div>
+        <div class="imagen-temporal">
+
+        </div>
+        <div class="imagen-agenda">
+
+        </div>
+    </div>
+    <script src="../js/jquery-3.7.1.min.js"></script>   
+    <script>
+        $(document).ready(function(){
+            $('#agregar-tarea').click(function(){
+                let valor = $('#tarea').val();
+                $('#tarea').val('');
+                $('.imagen-temporal').html('');
+                $.ajax({
+                    url: 'https://api.arasaac.org/v1/pictograms/es/search/'+valor,
+                    success:function(respuesta){
+                        console.log(respuesta[0].keywords[0].keyword);
+                        $('.imagen-temporal').append('<td> <img src="https://api.arasaac.org/api/pictograms/'+respuesta[0]._id+'" class="imagen-api" name="'+respuesta[0].keywords[0].keyword+'" onclick="hablar(this.name); agendar(this.src)"> <p>'+respuesta[0].keywords[0].keyword+'</p> </td>')
+                    }
+                });
+
+            });
+        });
+        function hablar(mensaje){
+            const speech = window.speechSynthesis;
+            speech.volume = 1;
+            speech.rate = 1;
+            speech.pitch = 1;
+            const utter = new SpeechSynthesisUtterance();
+            utter.text = mensaje;
+            speech.speak(utter);
+        }
+        function agendar(imagen){
+            $('.imagen-agenda').append('<td> <img src="'+imagen+'"> </td');    
+        }
+    </script>
+</body>
+</html>
